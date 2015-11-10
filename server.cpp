@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include<string.h> 
-#include<stdlib.h> 
-#include<arpa/inet.h>
-#include<sys/socket.h>
+#include <string.h> 
+#include <stdlib.h> 
+#include <arpa/inet.h>
+#include <sys/socket.h>
 
 
-#define BUFFSIZE = 512;
-#define PORT = 8888;
+#define BUFFSIZE = 512
+#define PORT = 8888
 
 void die(char *s){
     perror(s);
