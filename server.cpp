@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <string.h> 
+#include <strings.h>
+#include <sys/types.h>
 #include <stdlib.h> 
 #include <arpa/inet.h>
+#include <netinet/in.h>
 #include <sys/socket.h>
 
 
-#define BUFFSIZE = 512
-#define PORT = 8888
+#define BUFFSIZE 512
+#define PORT 8888
 
 void die(char *s){
     perror(s);
@@ -40,16 +43,16 @@ int main(void){
     
     while(1){
         printf("Waiting for data");
-        fflush(stout);
+        fflush(stdout);
         
-        if(recv_length = recvfrom(sock, buffer, BUFFSIZE, 0, (struct sockaddr *) &other, &me) == -1){
+        if((recv_length = recvfrom(sock, buffer, BUFFSIZE, 0, (struct sockaddr *) &other, &send_length)) == -1){
             die("recvfrom()");
         }
         
         printf("Received packet from %s:%d\n", inet_ntoa(other.sin_addr), ntohs(other.sin_port));
         printf("Data: %s\n" , buffer);
         
-        if (sendto(sock, buffer, recv_length, 0, (struct sockaddr*) &other, send_lengthlen) == -1)
+        if (sendto(sock, buffer, recv_length, 0, (struct sockaddr*) &other, send_length) == -1)
         {
             die("sendto()");
         }
